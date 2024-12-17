@@ -10,13 +10,13 @@ entity "Module" {
   * id : NUMBER
   --
   name : VARCHAR
-  devices : NUMBER[]
+  device_id : NUMBER
 }
 entity "House" {
   * id : NUMBER
   --
-  user_id : NUMBER
-  module_id : NUMBER
+  users : NUMBER[]
+  modules : NUMBER[]
   address : VARCHAR
 }
 entity "DeviceType" {
@@ -41,8 +41,8 @@ entity "TelemetryData" {
 }
 
 Device ||--o{ TelemetryData
-Device }--|| DeviceType
-Device }--|| Module
-Module ||--|| House
-User ||--o{ House
+Device ||--|| DeviceType
+Device ||--|| Module
+Module }--|| House
+User }o--|{ House
 @enduml
